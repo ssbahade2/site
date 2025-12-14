@@ -1,68 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sachin Bahade | Researcher & Founder</title>
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+      color: #1f2937;
+      background-color: #ffffff;
+    }
+    header {
+      background: #0f172a;
+      color: #fff;
+      padding: 0.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .header-container {
+      display: flex;
+      justify-content: flex-end;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      padding: 1rem 0;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #3b82f6;
+      transition: width 0.3s ease;
+    }
+    nav a:hover, 
+    nav a.active {
+      color: #ffffff;
+    }
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+    main {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+      text-align: justify;
+    }
+    h2 {
+      color: #0f172a;
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    p {
+      font-size: 1.125rem;
+      color: #374151;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: #2563eb;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .btn:hover {
+      background-color: #1e40af;
+    }
+    .profile-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+      gap: 2rem;
+    }
+    .profile-picture {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid #0f172a;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .profile-picture img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    footer {
+      background: #f8fafc;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+      color: #64748b;
+      font-size: 0.875rem;
+      border-top: 1px solid #e2e8f0;
+    }
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      main {
+        margin: 2rem auto;
+        padding: 0 1.5rem;
+      }
+      h2 {
+        font-size: 1.875rem;
+      }
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+      .news-card {
+        padding: 1rem;
+      }
+    }
+    
+    /* News Section Styles */
+    .news-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+    
+    .news-section h2 {
+      text-align: left;
+      margin-bottom: 2rem;
+      color: #0f172a;
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    .news-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background-color: #3b82f6;
+    }
+    
+    .news-timeline {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 0;
+    }
+
+    .timeline-item {
+      display: flex;
+      padding: 1rem 0;
+      border-left: 2px solid #3b82f6;
+      position: relative;
+      padding-left: 2rem;
+      margin-left: 1rem;
+    }
+
+    .timeline-item:last-child {
+      border-left-color: transparent;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 1.5rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #3b82f6;
+    }
+
+    .timeline-date {
+      min-width: 120px;
+      font-weight: 600;
+      color: #1e40af;
+      font-size: 0.95rem;
+    }
+
+    .timeline-content {
+      flex: 1;
+      color: #4b5563;
+      line-height: 1.6;
+    }
+
+    .timeline-content a {
+      color: #2563eb;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .timeline-content a:hover {
+      color: #1e40af;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="index.html" class="active">Home</a>
-            <a href="research.html">Research</a>
-            <a href="cv.html">CV</a>
-            <a href="#news">News</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
-    
-    <main>
-        <section class="hero">
-            <h1>Welcome to My Personal Website</h1>
-            <p>I am a research scientist and technology entrepreneur specialising in machine learning, computer vision, and AI-driven healthcare, with a PhD in Computer Science from Swansea University. My research focuses on deep learning for irregular domains, including 2D and 3D biomedical imaging data such as histopathology, immunostained cancer images, and multimodal microscopy datasets. I have published peer-reviewed work on graph neural networks for cell and nuclei detection and segmentation, contributing to advances in cancer image analysis and medical image understanding. My work brings together theory and application, aiming to translate advanced research into practical impact.
 
-            My expertise spans 2D and 3D medical image analysis, geometric deep learning, graph neural networks, multimodal learning, and large-scale data processing. I have developed and applied deep learning models for histopathology, immunostained cancer images, confocal microscopy, and multimodal biological datasets. I also work with modern AI techniques, including large language models, retrieval-augmented generation, vision-language models, and end-to-end machine learning pipelines, alongside traditional computer vision, feature extraction, and predictive modelling. I am particularly interested in multimodal integration, explainable AI, and robust systems for healthcare and life sciences.
+<header>
+  <div class="header-container">
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="research.html">Research</a>
+      <a href="startup.html">Startup</a>
+      <a href="cv.html">CV</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
 
-            As a postdoctoral researcher supported by the Wellcome Leap Delta Tissue project, I developed image informatics frameworks for analysing complex multi-scale and multimodal imaging data, collaborating closely with clinicians, biologists, and computational scientists to address real clinical challenges.
+<main>
+  <div class="profile-container">
+    <h2>Dr. Sachin S. Bahade</h2>
+  </div>
+  <p>
+    I am a research scientist and technology entrepreneur specialising in machine learning, computer vision, and AI-driven healthcare, with a PhD in Computer Science from Swansea University. My research focuses on deep learning for irregular domains, including 2D and 3D biomedical imaging data such as histopathology, immunostained cancer images, and multimodal microscopy datasets. I have published peer-reviewed work on graph neural networks for cell and nuclei detection and segmentation, contributing to advances in cancer image analysis and medical image understanding. My work brings together theory and application, aiming to translate advanced research into practical impact.
+  </p>
+  <p>
+    My expertise spans 2D and 3D medical image analysis, geometric deep learning, graph neural networks, multimodal learning, and large-scale data processing. I have developed and applied deep learning models for histopathology, immunostained cancer images, confocal microscopy, and multimodal biological datasets. I also work with modern AI techniques, including large language models, retrieval-augmented generation, vision-language models, and end-to-end machine learning pipelines, alongside traditional computer vision, feature extraction, and predictive modelling. I am particularly interested in multimodal integration, explainable AI, and robust systems for healthcare and life sciences.
+  </p>
+  <p>
+    As a postdoctoral researcher supported by the Wellcome Leap Delta Tissue project, I developed image informatics frameworks for analysing complex multi-scale and multimodal imaging data, collaborating closely with clinicians, biologists, and computational scientists to address real clinical challenges.
+  </p>
+  <p>
+    Alongside my academic work, I am the founder of Ajivo Pvt. Ltd., where I am building Mindfulness AI, an AI-powered wellbeing platform that combines emotion detection, personalised meditation, mood analytics, and guided mental health support. I lead the full product lifecycle, from system architecture and model development to mobile app deployment, cloud infrastructure, and user experience. The app is published on the Google Play Store and is continuously refined through real user feedback. My startup work reflects a long-term personal mindfulness practice and a commitment to building scalable, human-centred AI systems that support wellbeing and healthcare at scale. I also mentor and build software MVPs for projects across other domains.
+  </p>
+  <a href="research.html" class="btn">Explore My Research</a>
+</main>
 
-            Alongside my academic work, I am the founder of Ajivo Pvt. Ltd., where I am building Mindfulness AI, an AI-powered wellbeing platform that combines emotion detection, personalised meditation, mood analytics, and guided mental health support. I lead the full product lifecycle, from system architecture and model development to mobile app deployment, cloud infrastructure, and user experience. The app is published on the Google Play Store and is continuously refined through real user feedback. My startup work reflects a long-term personal mindfulness practice and a commitment to building scalable, human-centred AI systems that support wellbeing and healthcare at scale. I also mentor and build software MVPs for projects across other domains.
-            </p>
-        </section>
-    </main>
-    
-    <section id="news" class="news-section">
-        <div class="container">
-            <h2>Latest News</h2>
-            <div class="news-grid">
-                <article class="news-card">
-                    <div class="news-date">Dec 14, 2025</div>
-                    <h3>Launched Personal Website</h3>
-                    <p>Welcome to my new personal website! I'll be sharing updates about my research, projects, and thoughts here.</p>
-                </article>
-                <article class="news-card">
-                    <div class="news-date">Nov 30, 2025</div>
-                    <h3>New Research Paper Published</h3>
-                    <p>Our latest paper on "Advancements in Graph Neural Networks for Medical Imaging" has been accepted at the International Conference on Medical Image Computing and Computer-Assisted Intervention.</p>
-                </article>
-                <article class="news-card">
-                    <div class="news-date">Nov 15, 2025</div>
-                    <h3>Mindfulness AI Update</h3>
-                    <p>Launched version 2.5 of our Mindfulness AI app with enhanced emotion detection and personalized meditation recommendations.</p>
-                </article>
-            </div>
-        </div>
-    </section>
+<section id="news" class="news-section">
+  <h2>Latest News</h2>
+  <div class="news-timeline">
+    <div class="timeline-item">
+      <span class="timeline-date">Dec 2, 2025</span>
+      <span class="timeline-content">Latest update on Mindfulness AI app with new bilingual feature</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-date">Nov 19, 2025</span>
+      <span class="timeline-content">Website launched at <a href="https://mindfulnessai.co.uk/" target="_blank" rel="noopener noreferrer">mindfulnessai.co.uk</a></span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-date">Jun 22, 2025</span>
+      <span class="timeline-content">Mindfulness AI app officially released on <a href="https://play.google.com/store/apps/details?id=com.zjantech.mindfulnessaiapp" target="_blank" rel="noopener noreferrer"></a>Google Play Store</a></span>
+    </div>
+  </div>
+</section>
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 Sachin Bahade. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://github.com/ssbahade2" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://scholar.google.com/yourprofile" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-            </div>
-        </div>
-    </footer>
+<footer>
+  © 2025 Sachin Bahade | Researcher & Founder
+</footer>
+
 </body>
 </html>

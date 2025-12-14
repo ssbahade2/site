@@ -1,35 +1,313 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research - My Personal Website</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research | Sachin Bahade</title>
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+      color: #1f2937;
+      background-color: #ffffff;
+    }
+    header {
+      background: #0f172a;
+      color: #fff;
+      padding: 0.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .header-container {
+      display: flex;
+      justify-content: flex-end;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      padding: 1rem 0;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #3b82f6;
+      transition: width 0.3s ease;
+    }
+    nav a:hover, 
+    nav a.active {
+      color: #ffffff;
+    }
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+    main {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+    h1 {
+      color: #0f172a;
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+    h2 {
+      color: #1e40af;
+      font-size: 1.5rem;
+      margin: 2rem 0 1rem;
+    }
+    p {
+      font-size: 1.125rem;
+      color: #374151;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+    .research-item {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e2e8f0;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .research-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: #2563eb;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #2563eb;
+      color: #2563eb;
+    }
+    .btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .btn-outline:hover {
+      background: #eff6ff;
+    }
+
+    /* Publications Styles */
+    .publications-header {
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid #e2e8f0;
+      color: #0f172a;
+      font-size: 1.75rem;
+      font-weight: 600;
+    }
+
+    .publication {
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border-left: 4px solid #3b82f6;
+    }
+
+    .publication:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .publication h3 {
+      color: #1e40af;
+      margin: 0 0 0.5rem 0;
+      font-size: 1.1rem;
+      line-height: 1.4;
+    }
+
+    .publication-authors {
+      color: #4b5563;
+      font-style: italic;
+      margin: 0.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .publication-venue {
+      color: #4b5563;
+      margin: 0.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .publication-doi {
+      color: #3b82f6;
+      font-size: 0.9rem;
+      margin: 0.75rem 0 0 0;
+    }
+
+    .publication-doi a {
+      color: #3b82f6;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .publication-doi a:hover {
+      color: #1e40af;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .publication {
+        padding: 1.25rem;
+      }
+      
+      .publications-header {
+        font-size: 1.5rem;
+        margin: 2.5rem 0 1.25rem;
+      }
+      
+      .publication h3 {
+        font-size: 1rem;
+      }
+      
+      .publication-authors,
+      .publication-venue {
+        font-size: 0.9rem;
+      }
+    }
+
+    footer {
+      background: #f8fafc;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+      color: #64748b;
+      font-size: 0.875rem;
+      border-top: 1px solid #e2e8f0;
+    }
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      main {
+        margin: 2rem auto;
+        padding: 0 1.5rem;
+      }
+      h1 {
+        font-size: 1.875rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="research.html" class="active">Research</a>
-            <a href="cv.html">CV</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
-    
-    <main>
-        <h1>My Research</h1>
-        <section class="research-item">
-            <h2>Research Project 1</h2>
-            <p>Description of your first research project.</p>
-        </section>
-        <section class="research-item">
-            <h2>Research Project 2</h2>
-            <p>Description of your second research project.</p>
-        </section>
-    </main>
-    
-    <footer>
-        <p>&copy; 2025 My Personal Website. All rights reserved.</p>
-    </footer>
+
+<header>
+  <div class="header-container">
+    <h1>Sachin Bahade</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="research.html" class="active">Research</a>
+      <a href="startup.html">Startup</a>
+      <a href="cv.html">CV</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <h1>Research & Publications</h1>
+  
+  <div class="research-item">
+    <h2>Deep Learning for Medical Image Analysis</h2>
+    <p>My research focuses on developing advanced deep learning models for analyzing 2D and 3D biomedical imaging data, including histopathology, immunostained cancer images, and multimodal microscopy datasets. I've published work on graph neural networks for cell and nuclei detection and segmentation, contributing to advances in cancer image analysis.</p>
+    <a href="#publications" class="btn" onclick="event.preventDefault(); document.getElementById('publications').scrollIntoView({behavior: 'smooth'});">Read Publications</a>
+  </div>
+
+  <div class="research-item">
+    <h2>Geometric Deep Learning</h2>
+    <p>Exploring novel geometric deep learning approaches for irregular domains, with applications in medical imaging and beyond. This includes work on graph neural networks and their applications in analyzing complex biological structures.</p>
+    <a href="#publications" class="btn btn-outline" onclick="event.preventDefault(); document.getElementById('publications').scrollIntoView({behavior: 'smooth'});">View Publications</a>
+  </div>
+
+  <div class="research-item">
+    <h2>Multimodal Learning in Healthcare</h2>
+    <p>Research on integrating multiple data modalities using advanced machine learning techniques to improve diagnostic accuracy and patient outcomes in healthcare applications.</p>
+  </div>
+
+  <h2 id="publications" class="publications-header">Selected Publications</h2>
+
+  <div class="publication">
+    <h3>Graph Proposal Neural Networks for Cell Detection in Immunostained Hodgkin Lymphoma Histology Images</h3>
+    <p class="publication-authors">S. Bahade, M. Edwards, and X. Xie</p>
+    <p class="publication-venue">IEEE 20th International Symposium on Biomedical Imaging (ISBI), 2023, pp. 1–5</p>
+    <p class="publication-doi">DOI: <a href="https://doi.org/10.1109/ISBI53787.2023.10230633" target="_blank" rel="noopener noreferrer">10.1109/ISBI53787.2023.10230633</a></p>
+  </div>
+
+  <div class="publication">
+    <h3>Cascaded Graph Convolution Approach for Nuclei Detection in Histopathology Images</h3>
+    <p class="publication-authors">S. Bahade, M. Edwards, and X. Xie</p>
+    <p class="publication-venue">Journal of Image and Graphics, vol. 11, no. 1, pp. 15–20, 2023</p>
+    <p class="publication-doi">DOI: <a href="https://doi.org/10.18178/joig.11.1.15-20" target="_blank" rel="noopener noreferrer">10.18178/joig.11.1.15-20</a></p>
+  </div>
+
+  <div class="publication">
+    <h3>Graph Convolution Networks for Cell Segmentation</h3>
+    <p class="publication-authors">S. Bahade, M. Edwards, and X. Xie</p>
+    <p class="publication-venue">International Conference on Pattern Recognition Applications and Methods (ICPRAM), 2021, p 620-627</p>
+    <p class="publication-doi">DOI: <a href="https://doi.org/10.5220/0010324306200627" target="_blank" rel="noopener noreferrer">10.5220/0010324306200627</a></p>
+  </div>
+
+  <div class="publication">
+    <h3>Graph Convolutional Neural Network for Segmentation of Immunostained Hodgkin Lymphoma Histology Images</h3>
+    <p class="publication-authors">S. Bahade, M. Edwards, and X. Xie</p>
+    <p class="publication-venue">Medical Image Understanding and Analysis Conference (MIUA), 2019</p>
+  </div>
+</main>
+
+<footer>
+  © 2025 Sachin Bahade | Researcher & Founder
+</footer>
+
 </body>
 </html>

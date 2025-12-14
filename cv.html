@@ -1,44 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - My Personal Website</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curriculum Vitae | Sachin Bahade</title>
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+      color: #1f2937;
+      background-color: #ffffff;
+    }
+    header {
+      background: #0f172a;
+      color: #fff;
+      padding: 0.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .header-container {
+      display: flex;
+      justify-content: flex-end;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      padding: 1rem 0;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #3b82f6;
+      transition: width 0.3s ease;
+    }
+    nav a:hover, 
+    nav a.active {
+      color: #ffffff;
+    }
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+    main {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+    h1 {
+      color: #0f172a;
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+      text-align: center;
+    }
+    h2 {
+      color: #1e40af;
+      font-size: 1.5rem;
+      margin: 2.5rem 0 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    h3 {
+      color: #1f2937;
+      font-size: 1.25rem;
+      margin: 1.5rem 0 0.5rem;
+    }
+    p, li {
+      font-size: 1.05rem;
+      color: #374151;
+      line-height: 1.7;
+    }
+    .cv-section {
+      margin-bottom: 3rem;
+    }
+    .cv-item {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      border-left: 3px solid #3b82f6;
+    }
+    .cv-item h3 {
+      margin-top: 0;
+      color: #1e40af;
+    }
+    .date {
+      color: #64748b;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .skill-tag {
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: #2563eb;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    .btn-download:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    footer {
+      background: #f8fafc;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+      color: #64748b;
+      font-size: 0.875rem;
+      border-top: 1px solid #e2e8f0;
+    }
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      main {
+        margin: 2rem auto;
+        padding: 0 1.5rem;
+      }
+      h1 {
+        font-size: 1.875rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="research.html">Research</a>
-            <a href="cv.html" class="active">CV</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
+
+<header>
+  <div class="header-container">
+    <h1>Sachin Bahade</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="research.html">Research</a>
+      <a href="startup.html">Startup</a>
+      <a href="cv.html" class="active">CV</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <h1>Curriculum Vitae</h1>
+
+  <section class="cv-section">
+    <h2>Professional Summary</h2>
+    <p>Research scientist and technology entrepreneur with a PhD in Computer Science, specializing in machine learning, computer vision, and AI-driven healthcare. Developing AI solutions for medical imaging and healthcare applications.</p>
+  </section>
+  
+  <section class="cv-section">
+    <h2>Education</h2>
+    <div class="cv-item">
+      <h3>PhD in Computer Science</h3>
+      <span class="date">Swansea University | 2017 - 2023</span>
+      <p>Specialized in Advanced Deep Learning Approaches for for biomedical image analysis.".</p>
+      <div class="skills">
+        <span class="skill-tag">Deep Learning</span>
+        <span class="skill-tag">Medical Imaging</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">PyTorch</span>
+      </div>
+    </div>
     
-    <main>
-        <h1>Curriculum Vitae</h1>
-        <section class="cv-section">
-            <h2>Education</h2>
-            <div class="cv-item">
-                <h3>Degree in Field</h3>
-                <p>University Name, Year - Year</p>
-                <p>Description of your degree and achievements.</p>
-            </div>
-        </section>
-        
-        <section class="cv-section">
-            <h2>Work Experience</h2>
-            <div class="cv-item">
-                <h3>Job Title</h3>
-                <p>Company Name, Year - Present</p>
-                <p>Description of your role and achievements.</p>
-            </div>
-        </section>
-    </main>
+    <div class="cv-item">
+      <h3>MSc in Computer Science</h3>
+      <span class="date">Nagpur University | 2012 - 2014</span>
+      <p>compute Science & Engineering.</p>
+    </div>
+  </section>
+  
+  <section class="cv-section">
+    <h2>Professional Experience</h2>
+    <div class="cv-item">
+      <h3>Founder & CEO</h3>
+      <span class="date">Ajivo Pvt. Ltd. | 2025 - Present</span>
+      <ul>
+        <li>Founded and lead an AI-powered wellbeing platform combining emotion detection, personalized meditation, and mental health support</li>
+        <li>Led the development and launch of the Mindfulness AI mobile app on Google Play Store</li>
+        <li>Managed full product lifecycle from concept to deployment, including system architecture and cloud infrastructure</li>
+      </ul>
+      <div class="skills">
+        <span class="skill-tag">AI Product Development</span>
+        <span class="skill-tag">Startup Leadership</span>
+        <span class="skill-tag">Mobile App Development</span>
+      </div>
+    </div>
     
-    <footer>
-        <p>&copy; 2025 My Personal Website. All rights reserved.</p>
-    </footer>
+    <div class="cv-item">
+      <h3>Postdoctoral Researcher</h3>
+      <span class="date">Wellcome Leap Delta Tissue Project | 2023 - 2024</span>
+      <ul>
+        <li>Developed image informatics frameworks for multi-scale and multimodal imaging data</li>
+        <li>Collaborated with clinicians and biologists to develop AI solutions for clinical challenges</li>
+      </ul>
+    </div>
+  </section>
+  
+  <section class="cv-section">
+    <h2>Technical Skills</h2>
+    <div class="skills">
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">PyTorch</span>
+      <span class="skill-tag">TensorFlow</span>
+      <span class="skill-tag">Computer Vision</span>
+      <span class="skill-tag">Deep Learning</span>
+      <span class="skill-tag">Machine Learning</span>
+      <span class="skill-tag">Medical Imaging</span>
+      <span class="skill-tag">Cloud Computing</span>
+      <span class="skill-tag">Docker</span>
+      <span class="skill-tag">Git</span>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2025 Sachin Bahade | Researcher & Founder
+</footer>
+
 </body>
 </html>
